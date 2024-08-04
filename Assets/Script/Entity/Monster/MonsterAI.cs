@@ -65,7 +65,7 @@ public class MonsterAI : LivingEntity
 
         if (aliveTarget)
         {
-            if(aliveTarget && distance <= targetLockOnDistance)
+            if(distance <= targetLockOnDistance)
             {
                 if(!isAttacking)
                     ChaseTarget();
@@ -121,10 +121,7 @@ public class MonsterAI : LivingEntity
     {
         facingRight = !facingRight;
         spriteRenderer.flipX = !facingRight;
-        if (attackBox != null)
-        {
-            attackBox.Flip(); // 공격 박스의 방향도 함께 전환
-        }
+        attackBox.Flip();
     }
 
     protected void MoveInDirection(int direction)//플레이어가 인식 범위에 없을때 랜덤 이동
@@ -181,7 +178,7 @@ public class MonsterAI : LivingEntity
         }
     }
 
-    protected void OnDrawGizmos()
+    protected void OnDrawGizmos()//cognize plyaer range
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, targetLockOnDistance);
