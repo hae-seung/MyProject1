@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField] protected GameObject bulletPrefab;
+    [SerializeField] private Transform fireTransform;
+    
+    protected float lastFireTime;
+    protected int MagCapacity { get; set; }
+    protected int AmmoCapacity { get; set; }
+    protected int MagAmmo { get; set; }
+    protected float ReloadTime { get; set; }
+    protected float BulletSpeed { get; set; }
+    protected float TimeBetFire { get; set; }
+    protected float BulletDamage { get; set; }
+    protected float BulletMaxDistance { get; set; }
+    
+    
    public enum State
    {
         Ready,
         Empty,
         Reloading
    }
-
-    public State state { get; set; }
-
-    [SerializeField]
-    private GameObject bulletPrefab;
-    [SerializeField]
-    private Transform fireTransform;
-    [SerializeField]
-    private float timeBetFire;
-
+   
     public Transform FireTransform
     {
         get
@@ -27,30 +32,18 @@ public class Gun : MonoBehaviour
             return fireTransform;
         }
     }
-    public GameObject BulletPrefab { 
-        get
-        {
-            return bulletPrefab;
-        }
-    }
-
-    protected int magCapacity = 30;
-    protected int ammoRemain = 100;
-    protected int magAmmo;
-    protected float reloadTime = 1.2f;
-    protected float BulletSpeed = 50f;
-    protected float lastFireTime;
-    protected void Awake()
+    
+    public State state { get; set; }
+    
+    protected virtual void Awake()
     {
-        lastFireTime = 0;
-        ammoRemain = 100;
-        magAmmo = magCapacity;
+        lastFireTime = 0f;
         state = State.Ready;
     }
-
-   public virtual bool Fire()
+    
+   public bool Fire()
    {
-        if(state == State.Ready && Time.time >= lastFireTime + timeBetFire)
+        if(state == State.Ready && Time.time >= lastFireTime + TimeBetFire)
         {
             lastFireTime = Time.time;
             Shot();
@@ -58,58 +51,52 @@ public class Gun : MonoBehaviour
         }
         return false;
    }
-    protected virtual void Shot()
-    { 
-        Vector3 shootPosition = fireTransform.position;
-
-     
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 shootDirection = (mousePosition - shootPosition).normalized;
-
-
-        float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-
-        GameObject bullet = Instantiate(bulletPrefab, shootPosition, rotation);
-        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-        bulletRb.velocity = shootDirection * BulletSpeed;
-
-        magAmmo--;
-        if(magAmmo<=0)
-        {
-            state = State.Empty;
-        }
-        Debug.Log("rifle shot");
-    }
-
-   public bool reload()
+   
+   public bool reload()//public 고정
     {
-        if(state == State.Reloading || ammoRemain<=0 || magAmmo >= magCapacity)
+        if(state == State.Reloading || AmmoCapacity<=0 || MagAmmo >= MagCapacity)
             return false;
         StartCoroutine(ReloadRoutine());
         return true;
     }
-   private IEnumerator ReloadRoutine()
+   
+   protected IEnumerator ReloadRoutine()
    {
         state = State.Reloading;
 
         AudioManager.Instance.playReload();
 
-        yield return new WaitForSeconds(reloadTime);
+        yield return new WaitForSeconds(ReloadTime);
         
-        int ammoFill = magCapacity - magAmmo;
+        int ammoFill = MagCapacity - MagAmmo;
 
         Debug.Log("ammoFill : "+ ammoFill);
 
-        if(ammoRemain <= ammoFill)
+        if(AmmoCapacity <= ammoFill)
         {
-            ammoFill = ammoRemain;
+            ammoFill = AmmoCapacity;
         }
 
-        magAmmo += ammoFill;
-        ammoRemain -= ammoFill;
+        MagAmmo += ammoFill;
+        AmmoCapacity -= ammoFill;
 
         state = State.Ready;
    }
+   protected virtual void Shot() { }
+   
+   protected void AddBulletSpeed(){}
+   protected virtual void AddMagCapacity(){}
+   protected virtual void AddAmmoCapacity(){}
+   protected virtual void AddMagAmmo(){}
+   protected virtual void CoolDownReload(){}
+   protected virtual void CoolDownShotInterval(){}
+   
+   /*
+    MagCapacity;//한 개의 탄창량//아이템(대용량탄창 업그레이드)
+    AmmoCapacity;//모든 총탄량//아이템(최대 소지수 증가)
+    MagAmmo;//현재 탄창에 남은 총알//아이템(총알 보충)
+    ReloadTime;//재장전 시간//아이템(재장전속도 증가)
+    TimeBetFire;//총 발사 간격 감소//아이템(스나용)
+    BulletSpeed;//총알 날아가는 속도//아이템(총알 속도 증가)
+    */
 }

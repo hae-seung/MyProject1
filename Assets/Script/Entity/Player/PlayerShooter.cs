@@ -8,6 +8,7 @@ public class PlayerShooter : MonoBehaviour
     private Animator animator;
     private int rifle = 0;
     private int shotgun = 1;
+    //private int snifer = 2;
     
     [SerializeField]
     private Gun[] guns;
