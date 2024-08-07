@@ -19,8 +19,9 @@ public class MonsterAI : LivingEntity
     //Inheritance
     protected float criticalDamage;
     protected float bodyDamage;
+    protected float deathAnimationDuration;
     public float lastAttackTime = 0.0f;//fixed
-
+    
     //state
     protected float randomMoveInterval = 3.0f; // Random move time interval, temp, fixed
     protected float nextMoveTime = 0.0f; // Frame time, fixed
@@ -34,8 +35,9 @@ public class MonsterAI : LivingEntity
     protected AudioSource monsterAudioSource;
     protected Rigidbody2D monsterRigidbody;
     protected SpriteRenderer spriteRenderer;
-    
-    [SerializeField] protected DrawGizmos attackBox;
+    [SerializeField]protected AudioClip hitSound;
+    [SerializeField] protected AudioClip deathSound;
+    [SerializeField]protected DrawGizmos attackBox;
     
     protected bool aliveTarget
     {
@@ -63,7 +65,7 @@ public class MonsterAI : LivingEntity
     {
         float distance = Vector2.Distance(transform.position, targetTransform.position);
 
-        if (aliveTarget)
+        if (aliveTarget && !Dead)
         {
             if(distance <= targetLockOnDistance)
             {
@@ -92,9 +94,9 @@ public class MonsterAI : LivingEntity
                 MoveInDirection(currentDirection);
             }
         }
-        else//When player is die;
+        else//When player is die or Monster is die;
         {
-            return;
+            monsterRigidbody.velocity = Vector2.zero;
         }
     }
     
@@ -148,7 +150,7 @@ public class MonsterAI : LivingEntity
         }   
     }
     
-    public void BodyAttack()
+    public virtual void BodyAttack()
     {
         if (Time.time >= lastAttackTime + attackDelay)
         {
@@ -178,11 +180,43 @@ public class MonsterAI : LivingEntity
         }
     }
 
-    protected void OnDrawGizmos()//cognize plyaer range
+    protected void OnDrawGizmos()//cognize range player's position
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, targetLockOnDistance);
     }
+
+    public override void OnDamage(float damage)
+    {
+        if (!Dead)
+        {
+            //hitEffect play
+            monsterAudioSource.PlayOneShot(hitSound);
+        }
+        base.OnDamage(damage);
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+        Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.tag == "GroundSensor")
+                continue;
+            collider.enabled = false;
+        }
+        monsterAudioSource.PlayOneShot(deathSound);
+        monsterAnimator.SetTrigger("Die");
+        StartCoroutine(SetMonsterDie());
+    }
+
+    protected IEnumerator SetMonsterDie()
+    {
+        yield return new WaitForSeconds(deathAnimationDuration);
+        Destroy(gameObject);
+    }
+    
     protected virtual IEnumerator SetCriticalMotion(){yield break;}
     protected virtual IEnumerator SetAttackMotion(){yield break;}
     protected virtual void SetMonsterMove() { }

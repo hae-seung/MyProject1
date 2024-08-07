@@ -82,7 +82,7 @@ public class Gun : MonoBehaviour
 
         state = State.Ready;
    }
-   protected virtual void Shot() { }
+   protected virtual void Shot() {}
    
    protected void AddBulletSpeed(){}
    protected virtual void AddMagCapacity(){}

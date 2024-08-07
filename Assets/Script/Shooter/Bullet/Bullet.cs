@@ -24,10 +24,14 @@ public class Bullet : MonoBehaviour
     
     protected void OnTriggerEnter2D(Collider2D other)
     {
-        MonsterAI monsterAI = other.GetComponent<MonsterAI>();
-        if (monsterAI != null && !monsterAI.Dead)
+        if(other.tag == "Monster")
         {
-            HitMonster(monsterAI);
+            Debug.Log("적중!");
+            MonsterAI monsterAI = other.GetComponent<MonsterAI>();
+            if (monsterAI != null && !monsterAI.Dead)
+            {
+                HitMonster(monsterAI);
+            }
         }
     }
 

@@ -24,7 +24,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
       Health += newHealth;
    }
    
-   
    public virtual void OnDamage(float damage)
    {
       Health -= damage;

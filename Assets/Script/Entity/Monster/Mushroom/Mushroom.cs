@@ -7,11 +7,18 @@ using UnityEngine.UIElements;
 
 public class Mushroom : MonsterAI
 {
-   private float attackAnimationTime = 0.4f;
+   [SerializeField] private float attackAnimationTime = 0.4f;
+
+   protected override void Awake()
+   {
+      base.Awake();
+      deathAnimationDuration = 1.0f;
+   }
+   
    public override void Setup(MonsterData monsterData)
    {
       base.Setup(monsterData);
-      attackDelay += attackAnimationTime;
+      attackDelay += attackAnimationTime;//기본 공격 딜레이를 1초로 주고 싶으면,애니메이션 끝나는 시간 + 1초를 포함해야함.
       criticalDamage = 2 * damage;
       bodyDamage = (float)(0.5 * damage);
    }
@@ -37,14 +44,6 @@ public class Mushroom : MonsterAI
       isAttacking = false;
    }
    
-   protected void BodyAttack()
-   {
-      if (Time.time >= lastAttackTime + attackDelay)
-      {
-         targetEntity.OnDamage(bodyDamage);
-         lastAttackTime = Time.time;
-      }
-   }
    
    protected override void SetMonsterMove()
    {

@@ -10,7 +10,7 @@ public class BodyAttack : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            monster.BodyAttack();
+            monster.BodyAttack();//몬스터가 데미지를 주는 몸샷 영역
         }
     }
 }

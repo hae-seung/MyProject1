@@ -59,7 +59,6 @@ public class PlayerHealth : LivingEntity
     {
         base.Die();
         healthSlider.gameObject.SetActive(false);
-        
         playerAudioPlayer.PlayOneShot(deathClip);
         //playerAnimator.SetTrigger("Die");
         playerInput.enabled = false;

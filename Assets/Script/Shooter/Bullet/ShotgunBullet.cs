@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RifleBullet : Bullet
+public class ShotgunBullet : Bullet
 {
-    //기본형인 Bullet과 동일
+   //Bullet과 동일
 }
