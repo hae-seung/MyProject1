@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -13,12 +14,14 @@ public class PlayerHealth : LivingEntity
 
     private AudioSource playerAudioPlayer;
     private Animator playerAnimator;
-
+    private bool isHurt;
+    
     [SerializeField] private PlayererInput playerInput;
     [SerializeField] private PlayerShooter playerShooter;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         playerAnimator = GetComponent<Animator>();
         playerAudioPlayer = GetComponent<AudioSource>();
     }
@@ -46,13 +49,19 @@ public class PlayerHealth : LivingEntity
 
     public override void OnDamage(float damage)
     {
-        if (!Dead)
+        if (!isHurt)
         {
-            playerAudioPlayer.PlayOneShot(hitClip);
+            isHurt = true;
+            if (!Dead)
+            {
+                playerAudioPlayer.PlayOneShot(hitClip);
+            }
+
+            base.OnDamage(damage);
+            StartCoroutine(HurtRoutine());
+            healthSlider.value = Health;
+            //play hit sound}
         }
-        base.OnDamage(damage);
-        healthSlider.value = Health;
-        //play hit sound
     }
 
     protected override void Die()
@@ -65,6 +74,23 @@ public class PlayerHealth : LivingEntity
         playerShooter.enabled = false;
     }
 
+    private IEnumerator HurtRoutine()
+    {
+        yield return new WaitForSeconds(1.0f);
+        isHurt = false;
+    }
+    
+    protected override IEnumerator alphaBlink()
+    {
+        while(isHurt)
+        {
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.color = playerHalfA;
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.color = FullA;
+        }
+    }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!Dead)

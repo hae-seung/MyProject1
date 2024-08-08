@@ -6,8 +6,8 @@ using UnityEngine.Timeline;
 
 public class MonsterAI : LivingEntity
 {
-    public Transform targetTransform;
-    public LivingEntity targetEntity;
+    protected Transform targetTransform;
+    protected LivingEntity targetEntity;
     
     //scriptable data => temp
     protected float targetLockOnDistance = 20f;
@@ -34,7 +34,6 @@ public class MonsterAI : LivingEntity
     protected Animator monsterAnimator;
     protected AudioSource monsterAudioSource;
     protected Rigidbody2D monsterRigidbody;
-    protected SpriteRenderer spriteRenderer;
     [SerializeField]protected AudioClip hitSound;
     [SerializeField] protected AudioClip deathSound;
     [SerializeField]protected DrawGizmos attackBox;
@@ -52,12 +51,14 @@ public class MonsterAI : LivingEntity
     }
     
     
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        targetEntity = GameObject.Find("Player").GetComponent<LivingEntity>();
+        targetTransform = targetEntity.transform;
         monsterAnimator = GetComponent<Animator>();
         monsterAudioSource = GetComponent<AudioSource>();
         monsterRigidbody = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         currentDirection = 0;
     }
 
@@ -190,7 +191,7 @@ public class MonsterAI : LivingEntity
     {
         if (!Dead)
         {
-            //hitEffect play
+            //effect play
             monsterAudioSource.PlayOneShot(hitSound);
         }
         base.OnDamage(damage);
@@ -211,6 +212,14 @@ public class MonsterAI : LivingEntity
         StartCoroutine(SetMonsterDie());
     }
 
+    protected override IEnumerator alphaBlink()
+    {
+        yield return new WaitForSeconds(0.05f);
+        spriteRenderer.color = monsterHalfA;
+        yield return new WaitForSeconds(0.05f);
+        spriteRenderer.color = FullA;
+    }
+    
     protected IEnumerator SetMonsterDie()
     {
         yield return new WaitForSeconds(deathAnimationDuration);
