@@ -9,12 +9,12 @@ public class MonsterAI : LivingEntity
     protected Transform targetTransform;
     protected LivingEntity targetEntity;
     
-    //scriptable data => temp
+    //scriptable data => All temp
     protected float targetLockOnDistance = 20f;
     protected float speed = 2f;
     protected float damage = 10f; 
     protected int criticalProbability = 1;
-    public float attackDelay; //공격이 끝나고 그 다음 공격까지 시간
+    public float attackDelay = 1.0f; //공격이 끝나고 그 다음 공격까지 시간
     
     //Inheritance
     protected float criticalDamage;
@@ -35,8 +35,9 @@ public class MonsterAI : LivingEntity
     protected AudioSource monsterAudioSource;
     protected Rigidbody2D monsterRigidbody;
     [SerializeField]protected AudioClip hitSound;
-    [SerializeField] protected AudioClip deathSound;
-    [SerializeField]protected DrawGizmos attackBox;
+    [SerializeField]protected AudioClip deathSound;
+    [SerializeField]protected AttackBox attackBox;
+    [SerializeField]protected CriticalBox criticalBox;
     
     protected bool aliveTarget
     {
@@ -125,6 +126,7 @@ public class MonsterAI : LivingEntity
         facingRight = !facingRight;
         spriteRenderer.flipX = !facingRight;
         attackBox.Flip();
+        criticalBox.Flip();
     }
 
     protected void MoveInDirection(int direction)//플레이어가 인식 범위에 없을때 랜덤 이동

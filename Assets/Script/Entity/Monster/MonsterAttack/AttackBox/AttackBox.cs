@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawGizmos : MonoBehaviour
+public class AttackBox : MonoBehaviour
 {
     [SerializeField] private Transform pos; // 공격 박스의 위치
     [SerializeField] private Vector2 boxSize; // 공격 박스의 크기

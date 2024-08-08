@@ -641,11 +641,6 @@ PolygonCollider2D:
       - {x: 0.05358386, y: -0.24747604}
       - {x: -0.10751963, y: -0.2509926}
   m_UseDelaunayMesh: 0
---- !u!4 &643013743 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2840886789423432032, guid: 907e1e17128caf44191b7313a70fc674, type: 3}
-  m_PrefabInstance: {fileID: 940619446}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &901651454
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,11 +741,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2840886789423432032, guid: 907e1e17128caf44191b7313a70fc674, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 101.3
+      value: 94.7
       objectReference: {fileID: 0}
     - target: {fileID: 2840886789423432032, guid: 907e1e17128caf44191b7313a70fc674, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2840886789423432032, guid: 907e1e17128caf44191b7313a70fc674, type: 3}
       propertyPath: m_LocalPosition.z
@@ -790,10 +785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2840886789423432032, guid: 907e1e17128caf44191b7313a70fc674, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1319074194}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 907e1e17128caf44191b7313a70fc674, type: 3}
 --- !u!1 &968601114
@@ -1047,73 +1039,6 @@ Transform:
   - {fileID: 575182057}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1319074193
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1319074194}
-  - component: {fileID: 1319074195}
-  m_Layer: 0
-  m_Name: OnGroundCollider
-  m_TagString: GroundSensor
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1319074194
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319074193}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.033, y: -0.282, z: -9.9239645}
-  m_LocalScale: {x: 0.07456157, y: 0.07456157, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 643013743}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &1319074195
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319074193}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 3, y: 0.01}
-  m_Direction: 1
 --- !u!1 &1336854408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,11 +1505,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1293603880881665622, guid: 5f21c16b15f28df4b93309684a2d54bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 112.9
+      value: 149.2
       objectReference: {fileID: 0}
     - target: {fileID: 1293603880881665622, guid: 5f21c16b15f28df4b93309684a2d54bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3
+      value: 8.2
       objectReference: {fileID: 0}
     - target: {fileID: 1293603880881665622, guid: 5f21c16b15f28df4b93309684a2d54bd, type: 3}
       propertyPath: m_LocalPosition.z

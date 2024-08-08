@@ -9,6 +9,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
    public bool Dead { get; protected set; }
    public event Action onDeath;
 
+   //Hit Effect
    protected SpriteRenderer spriteRenderer;
    protected Color playerHalfA = new Color(1, 1, 1, 0.5f);
    protected Color monsterHalfA = new Color(1, 0, 0, 0.5f);

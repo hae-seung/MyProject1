@@ -28,8 +28,8 @@ public class Mushroom : MonsterAI
       Debug.Log("크리티컬!");
       yield return new WaitForSeconds(attackAnimationTime);
       monsterAnimator.SetBool("Critical", false);
-      attackBox.AttackPlayer(criticalDamage);
-      yield return new WaitForSeconds(1.0f);
+      criticalBox.CriticalAttackPlayer(criticalDamage);
+      yield return new WaitForSeconds(attackDelay);
       lastAttackTime = Time.time;
       isAttacking = false;
    }
@@ -39,11 +39,10 @@ public class Mushroom : MonsterAI
       yield return new WaitForSeconds(attackAnimationTime);
       monsterAnimator.SetBool("Attack", false);
       attackBox.AttackPlayer(damage);
-      yield return new WaitForSeconds(1.0f);
+      yield return new WaitForSeconds(attackDelay);
       lastAttackTime = Time.time;
       isAttacking = false;
    }
-   
    
    protected override void SetMonsterMove()
    {
