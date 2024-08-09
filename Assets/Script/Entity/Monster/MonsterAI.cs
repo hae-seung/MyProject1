@@ -10,11 +10,11 @@ public class MonsterAI : LivingEntity
     protected LivingEntity targetEntity;
     
     //scriptable data => All temp
-    protected float targetLockOnDistance = 20f;
-    protected float speed = 2f;
-    protected float damage = 10f; 
-    protected int criticalProbability = 1;
-    public float attackDelay = 1.0f; //공격이 끝나고 그 다음 공격까지 시간
+    protected float targetLockOnDistance;
+    protected float speed;
+    protected float damage;
+    protected int criticalProbability;
+    public float attackDelay; //공격이 끝나고 그 다음 공격까지 시간
     
     //Inheritance
     protected float criticalDamage;
@@ -34,6 +34,8 @@ public class MonsterAI : LivingEntity
     protected Animator monsterAnimator;
     protected AudioSource monsterAudioSource;
     protected Rigidbody2D monsterRigidbody;
+    protected ProbabilityCalculator probabilityCalculator = new();
+    
     [SerializeField]protected AudioClip hitSound;
     [SerializeField]protected AudioClip deathSound;
     [SerializeField]protected AttackBox attackBox;
@@ -168,7 +170,7 @@ public class MonsterAI : LivingEntity
         if (!isAttacking && Time.time >= lastAttackTime + attackDelay)
         {
             isAttacking = true;
-            bool isCritical = ProbabilityCalculator.Instance.GetRandomNum(criticalProbability);
+            bool isCritical = probabilityCalculator.GetRandomNum(criticalProbability);
             
             if (isCritical)
             {

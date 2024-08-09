@@ -7,7 +7,6 @@ public class CriticalBox : MonoBehaviour
     [SerializeField] private Transform pos; // 공격 박스의 위치
     [SerializeField] private Vector2 boxSize; // 공격 박스의 크기
     
-    
     public void CriticalAttackPlayer(float damage)
     {
         // pos의 위치를 사용하여 충돌 감지
