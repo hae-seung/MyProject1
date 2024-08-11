@@ -9,8 +9,8 @@ public class Gun : MonoBehaviour
     
     protected float lastFireTime;
     protected int MagCapacity { get; set; }
-    protected int AmmoCapacity { get; set; }
-    protected int MagAmmo { get; set; }
+    public int AmmoCapacity { get; protected set; }
+    public int MagAmmo { get; protected set; }
     protected float ReloadTime { get; set; }
     protected float BulletSpeed { get; set; }
     protected float TimeBetFire { get; set; }
@@ -47,6 +47,7 @@ public class Gun : MonoBehaviour
         {
             lastFireTime = Time.time;
             Shot();
+            UIManager.Instance.UpdateAmmoText(MagAmmo, AmmoCapacity);
             return true;
         }
         return false;
@@ -79,7 +80,8 @@ public class Gun : MonoBehaviour
 
         MagAmmo += ammoFill;
         AmmoCapacity -= ammoFill;
-
+        
+        UIManager.Instance.UpdateAmmoText(MagAmmo, AmmoCapacity);
         state = State.Ready;
    }
    protected virtual void Shot() {}

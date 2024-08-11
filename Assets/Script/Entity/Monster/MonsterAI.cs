@@ -52,13 +52,22 @@ public class MonsterAI : LivingEntity
             return false;
         }
     }
-    
+
+    protected override void OnEnable()
+    {
+        targetEntity = GameManager.Instance.player;
+        targetTransform = targetEntity.transform;
+        Dead = false;
+        Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D collider in colliders)
+        {
+            collider.enabled = true;
+        }
+    }
     
     protected override void Awake()
     {
         base.Awake();
-        targetEntity = GameObject.Find("Player").GetComponent<LivingEntity>();
-        targetTransform = targetEntity.transform;
         monsterAnimator = GetComponent<Animator>();
         monsterAudioSource = GetComponent<AudioSource>();
         monsterRigidbody = GetComponent<Rigidbody2D>();
@@ -227,7 +236,7 @@ public class MonsterAI : LivingEntity
     protected IEnumerator SetMonsterDie()
     {
         yield return new WaitForSeconds(deathAnimationDuration);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     
     protected virtual IEnumerator SetCriticalMotion(){yield break;}

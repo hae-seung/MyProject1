@@ -59,6 +59,19 @@ public class PlayerShooter : MonoBehaviour
         {
             gun = guns[gunmode];
         }
+        switch(gunmode)
+        {
+            case 0://rifle
+                UIManager.Instance.UpdateGunModeText("Rifle");
+                break;
+            case 1://shotgun
+                UIManager.Instance.UpdateGunModeText("Shotgun");
+                break;
+            case 2://snifer
+                UIManager.Instance.UpdateGunModeText("Snifer");
+                break;
+        }
+        UIManager.Instance.UpdateAmmoText(gun.MagAmmo, gun.AmmoCapacity);
     }
     
 }

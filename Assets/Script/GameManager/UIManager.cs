@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -7,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : Singleton<UIManager>
 {
     public Text ammoText;
-    public Text timeText;
+    public Text scoreText;
     public Text waveText;
     public Text moneyText;
     public Text gunModeText;
@@ -19,15 +17,14 @@ public class UIManager : Singleton<UIManager>
         ammoText.text = magAmmo + "/" + remainAmmo;
     }
 
-    public void UpdateTimeText(float min, float sec)
+    public void UpdateScoreText(int newScore)
     {
-        string time = string.Format("{0:00}:{1:00.00}", min, sec);
-        timeText.text = time;
+        scoreText.text = "Score : " + newScore;
     }
 
     public void UpdateWaveText(int waves, int count)
     {
-        waveText.text = "Wave : " + waves + "/nEnemy Left : " + count;
+        waveText.text = "Wave : " + waves + "\nEnemy Left : " + count;
     }
 
     public void UpdateMoneyText(int money)
@@ -35,9 +32,10 @@ public class UIManager : Singleton<UIManager>
         moneyText.text = "Money : " + money + "원";
     }
 
-    public void UpdateGunModeText()
+    public void UpdateGunModeText(string gun)
     {
-        gunModeText.text = "Gun : ";
+        
+        gunModeText.text = gun;
     }
 
     public void SetActiveGameoverUI(bool active)
@@ -48,5 +46,6 @@ public class UIManager : Singleton<UIManager>
     public void GameRestart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameoverUI.SetActive(false);
     }
 }

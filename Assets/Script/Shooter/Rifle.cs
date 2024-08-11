@@ -13,7 +13,7 @@ public class Rifle : Gun
         ReloadTime = 1.2f;
         TimeBetFire = 0.1f;
         BulletSpeed = 50f;
-        BulletDamage = 10f;
+        BulletDamage = 100f;
         BulletMaxDistance = 20f;
     }
     

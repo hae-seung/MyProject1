@@ -16,5 +16,5 @@ MonoBehaviour:
   damage: 10
   speed: 2
   attackDelay: 3
-  targetLockOnDistance: 10
-  critical: 2
+  targetLockOnDistance: 50
+  criticalProbability: 0
