@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.Timeline;
 
 public class MonsterAI : LivingEntity
@@ -14,7 +15,7 @@ public class MonsterAI : LivingEntity
     protected float speed;
     protected float damage;
     protected int criticalProbability;
-    public float attackDelay; //공격이 끝나고 그 다음 공격까지 시간
+    protected float attackDelay; //공격이 끝나고 그 다음 공격까지 시간
     
     //Inheritance
     protected float criticalDamage;
@@ -29,7 +30,6 @@ public class MonsterAI : LivingEntity
     public bool isAttacking = false;
     protected bool facingRight = true;
     
-
     //component
     protected Animator monsterAnimator;
     protected AudioSource monsterAudioSource;
@@ -55,14 +55,39 @@ public class MonsterAI : LivingEntity
 
     protected override void OnEnable()
     {
+        Init();
+    }
+
+    protected void Init()
+    {
+        // Target 초기화
         targetEntity = GameManager.Instance.player;
         targetTransform = targetEntity.transform;
+    
+        // 기본 상태 초기화
         Dead = false;
+        isAttacking = false;
+        lastAttackTime = 0;
+
+        // Collider 초기화
         Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
         foreach (Collider2D collider in colliders)
         {
             collider.enabled = true;
         }
+
+        // 애니메이터 초기화
+        monsterAnimator.ResetTrigger("Die");
+        monsterAnimator.SetBool("Attack", false);
+        monsterAnimator.SetBool("Critical", false);
+        monsterAnimator.Play("Idle", -1, 0f); // 애니메이터를 초기화
+
+        // 물리적 상태 초기화
+        monsterRigidbody.velocity = Vector2.zero;
+    
+        // 기타 초기화
+        nextMoveTime = 0;
+        currentDirection = 0;
     }
     
     protected override void Awake()
@@ -224,19 +249,21 @@ public class MonsterAI : LivingEntity
         monsterAnimator.SetTrigger("Die");
         StartCoroutine(SetMonsterDie());
     }
-
+    
+    protected virtual IEnumerator SetMonsterDie()
+    {
+        
+        yield return new WaitForSeconds(deathAnimationDuration);
+        gameObject.SetActive(false);
+    }
+    
+    
     protected override IEnumerator alphaBlink()
     {
         yield return new WaitForSeconds(0.05f);
         spriteRenderer.color = monsterHalfA;
         yield return new WaitForSeconds(0.05f);
         spriteRenderer.color = FullA;
-    }
-    
-    protected IEnumerator SetMonsterDie()
-    {
-        yield return new WaitForSeconds(deathAnimationDuration);
-        gameObject.SetActive(false);
     }
     
     protected virtual IEnumerator SetCriticalMotion(){yield break;}

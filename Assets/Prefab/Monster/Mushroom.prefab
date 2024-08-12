@@ -72,7 +72,7 @@ Transform:
   m_GameObject: {fileID: 3323341518104595204}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.001, y: -0.274, z: -9.9239645}
+  m_LocalPosition: {x: -0.002, y: -0.263, z: -9.9239645}
   m_LocalScale: {x: 0.083333336, y: 0.083333336, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -111,7 +111,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2, y: 0.01}
+  m_Size: {x: 1, y: 0.01}
   m_Direction: 1
 --- !u!1 &4334640371084694745
 GameObject:
@@ -252,9 +252,9 @@ GameObject:
   - component: {fileID: 7320682595948207410}
   - component: {fileID: 4896491980082146733}
   - component: {fileID: 6775641471757383782}
-  - component: {fileID: 5024326216537454205}
   - component: {fileID: 4810008612994749923}
   - component: {fileID: 9093228729340541875}
+  - component: {fileID: 8330694057196839023}
   m_Layer: 0
   m_Name: Mushroom
   m_TagString: Monster
@@ -368,7 +368,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  attackDelay: 0.5
   lastAttackTime: 0
   isAttacking: 0
   hitSound: {fileID: 8300000, guid: c3d8accfc053f004ca665a1c8c4a6919, type: 3}
@@ -376,33 +375,6 @@ MonoBehaviour:
   attackBox: {fileID: 7231931486353039813}
   criticalBox: {fileID: 2181858548316321670}
   attackAnimationTime: 0.4
---- !u!50 &5024326216537454205
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5553530309469082243}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 4eab635ac17f09244b61d4d3a12f3170, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 0
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!82 &4810008612994749923
 AudioSource:
   m_ObjectHideFlags: 0
@@ -534,6 +506,33 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.07}
   m_Size: {x: 0.25, y: 0.4}
   m_Direction: 0
+--- !u!50 &8330694057196839023
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553530309469082243}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8051570176804866952
 GameObject:
   m_ObjectHideFlags: 0

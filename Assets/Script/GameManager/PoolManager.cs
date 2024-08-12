@@ -10,11 +10,11 @@ public class PoolManager : MonoBehaviour
 
     private void Awake()
     {
-        pools = new List<GameObject>[monsterPrefab.Length];//배열초기화
+        pools = new List<GameObject>[monsterPrefab.Length]; // 배열 초기화
 
         for (int i = 0; i < pools.Length; i++)
         {
-            pools[i] = new List<GameObject>();//List 초기화
+            pools[i] = new List<GameObject>(); // List 초기화
         }
     }
 
@@ -27,6 +27,7 @@ public class PoolManager : MonoBehaviour
             if (!item.activeSelf)
             {
                 select = item;
+                select.transform.rotation = monsterPrefab[index].transform.rotation; // 회전값 맞추기
                 select.SetActive(true);
                 break;
             }
@@ -35,6 +36,7 @@ public class PoolManager : MonoBehaviour
         if (!select)
         {
             select = Instantiate(monsterPrefab[index], transform);
+            select.transform.rotation = monsterPrefab[index].transform.rotation; // 회전값 맞추기
             pools[index].Add(select);
         }
 
