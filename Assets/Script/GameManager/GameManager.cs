@@ -7,14 +7,16 @@ public class GameManager : Singleton<GameManager>
 {
    public PoolManager pool;
    public LivingEntity player;
+   public Transform spawnPoint;
    
    private int score = 0;
    public bool isGameover { get; private set; }
-
+   public event Action OnResume;
    
    private void Start()
    {
       FindObjectOfType<PlayerHealth>().onDeath += EndGame;
+      player.transform.position = spawnPoint.transform.position;
    }
 
    public void EndGame()
@@ -30,5 +32,16 @@ public class GameManager : Singleton<GameManager>
          score += newScore;
          UIManager.Instance.UpdateScoreText(score);
       }
+   }
+
+   public void PlayerSetSpawnPoint()
+   {
+      player.transform.position = spawnPoint.transform.position;
+   }
+
+   public void Resume()
+   {
+      OnResume?.Invoke();
+      Time.timeScale = 1;
    }
 }

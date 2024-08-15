@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +10,13 @@ public class Gun : MonoBehaviour
     
     protected float lastFireTime;
     protected int MagCapacity { get; set; }
-    public int AmmoCapacity { get; protected set; }
-    public int MagAmmo { get; protected set; }
+    public int AmmoCapacity { get; set; }
+    public int MagAmmo { get;  set; }
     protected float ReloadTime { get; set; }
     protected float BulletSpeed { get; set; }
     protected float TimeBetFire { get; set; }
-    protected float BulletDamage { get; set; }
-    protected float BulletMaxDistance { get; set; }
+    public float BulletDamage { get; set; }
+    public float BulletMaxDistance { get; set; }
     
     
    public enum State
@@ -41,7 +42,7 @@ public class Gun : MonoBehaviour
         state = State.Ready;
     }
     
-   public bool Fire()
+    public bool Fire()
    {
         if(state == State.Ready && Time.time >= lastFireTime + TimeBetFire)
         {
@@ -80,8 +81,9 @@ public class Gun : MonoBehaviour
 
         MagAmmo += ammoFill;
         AmmoCapacity -= ammoFill;
-        
+       
         UIManager.Instance.UpdateAmmoText(MagAmmo, AmmoCapacity);
+        
         state = State.Ready;
    }
    protected virtual void Shot() {}

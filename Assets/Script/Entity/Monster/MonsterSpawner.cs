@@ -27,6 +27,7 @@ public class MonsterSpawner : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.OnResume += StartWave;
         StartWave();
     }
 
@@ -95,13 +96,15 @@ public class MonsterSpawner : MonoBehaviour
         isBossAlive = true;
         
         yield return new WaitForSeconds(1.0f);
+        UIManager.Instance.AnnounceBoss();
 
         int bossIndex = UnityEngine.Random.Range(0, bossData.Length);
         GameObject bossMonster = Instantiate(bossPrefab[bossIndex], bossSpawnPoint.position, Quaternion.identity);
 
         if (bossMonster != null)
             Debug.Log("보스가 소환되었습니다.");
-
+        
+        
         BossAI bossAI = bossMonster.GetComponent<BossAI>();
         bossAI.Setup(bossData[bossIndex]);
         monsters.Add(bossAI);
@@ -112,7 +115,7 @@ public class MonsterSpawner : MonoBehaviour
             isBossAlive = false;
 
             // 보스가 죽으면 다음 웨이브 시작
-            StartWave();
+            UIManager.Instance.OpenShop();
         };
     }
 

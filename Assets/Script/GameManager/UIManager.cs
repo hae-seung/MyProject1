@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,7 @@ public class UIManager : Singleton<UIManager>
     public Text moneyText;
     public Text gunModeText;
     public GameObject gameoverUI;
+    public GameObject shopUI;
     
     //탄알 텍스트 갱신
     public void UpdateAmmoText(int magAmmo, int remainAmmo)
@@ -34,7 +36,6 @@ public class UIManager : Singleton<UIManager>
 
     public void UpdateGunModeText(string gun)
     {
-        
         gunModeText.text = gun;
     }
 
@@ -47,5 +48,22 @@ public class UIManager : Singleton<UIManager>
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameoverUI.SetActive(false);
+    }
+
+    public void AnnounceBoss()
+    {
+        //보스 알림 UI setActive
+    }
+
+    public void OpenShop()
+    {
+        GameManager.Instance.PlayerSetSpawnPoint();
+        StartCoroutine(TimeSetSlow());
+    }
+    private IEnumerator TimeSetSlow()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Time.timeScale = 0;
+        shopUI.SetActive(true);
     }
 }
