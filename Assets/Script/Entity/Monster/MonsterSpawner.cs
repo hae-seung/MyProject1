@@ -14,10 +14,11 @@ public class MonsterSpawner : MonoBehaviour
     public Transform bossSpawnPoint;
     public Transform[] spawnPoints;
 
-    private int wave = 0;
+    
     private int spawnCount = 0;
     private int currentMonsterCount = 0;
 
+    private int spawnWave;
     private bool isBossAlive = false;
     private bool isWaveInProgress = false;
     
@@ -28,8 +29,8 @@ public class MonsterSpawner : MonoBehaviour
 
     private void Start()
     {
+        spawnWave = GameManager.Instance.Wave;
         GameManager.Instance.OnResume += StartWave;
-        StartWave();
     }
 
     private void Update()
@@ -40,13 +41,14 @@ public class MonsterSpawner : MonoBehaviour
         UpdateUI();
     }
 
-    private void StartWave()
+    public void StartWave()
     {
-        wave++;
+        spawnWave++;
+        GameManager.Instance.Wave = spawnWave;
         isBossAlive = false; // 보스 상태 초기화
 
         int controlWave = 10;
-        spawnCount = wave < controlWave ? Mathf.RoundToInt(1.5f * wave) : Mathf.RoundToInt(1.5f * controlWave);
+        spawnCount = spawnWave < controlWave ? Mathf.RoundToInt(1.5f * spawnWave) : Mathf.RoundToInt(1.5f * controlWave);
         currentMonsterCount = spawnCount;
 
         for (int i = 0; i < spawnCount; i++)
@@ -75,7 +77,7 @@ public class MonsterSpawner : MonoBehaviour
                 if (monsters.Remove(monster))
                 {
                     currentMonsterCount--; // 남아있는 몬스터 수 감소
-
+                    GameManager.Instance.AddScore(spawnWave * 10);
                     // 모든 몬스터가 죽었을 때 보스 소환 준비
                     if (currentMonsterCount <= 0 && monsters.Count == 0 && !isBossAlive)
                     {
@@ -108,7 +110,7 @@ public class MonsterSpawner : MonoBehaviour
         {
             monsters.Remove(bossAI);
             isBossAlive = false;
-
+            GameManager.Instance.AddScore(spawnWave * 20);
             // 보스가 죽으면 다음 웨이브 시작
             UIManager.Instance.OpenShop();
         };
@@ -117,6 +119,6 @@ public class MonsterSpawner : MonoBehaviour
     private void UpdateUI()
     {
         int remainingEnemies = isBossAlive ? 1 : Mathf.Max(0, currentMonsterCount); // 보스가 살아있으면 1, 아니면 남은 몬스터 수 (음수 방지)
-        UIManager.Instance.UpdateWaveText(wave, remainingEnemies);
+        UIManager.Instance.UpdateWaveText(spawnWave, remainingEnemies);
     }
 }

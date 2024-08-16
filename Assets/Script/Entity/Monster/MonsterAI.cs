@@ -35,7 +35,9 @@ public class MonsterAI : LivingEntity
     protected AudioSource monsterAudioSource;
     protected Rigidbody2D monsterRigidbody;
     protected ProbabilityCalculator probabilityCalculator = new();
-    
+
+
+    [SerializeField]protected GameObject coinPrefab;
     [SerializeField]protected AudioClip hitSound;
     [SerializeField]protected AudioClip deathSound;
     [SerializeField]protected AttackBox attackBox;
@@ -252,12 +254,17 @@ public class MonsterAI : LivingEntity
     
     protected virtual IEnumerator SetMonsterDie()
     {
-        
         yield return new WaitForSeconds(deathAnimationDuration);
+        InstanceCoin();
         gameObject.SetActive(false);
     }
-    
-    
+
+    protected virtual void InstanceCoin()
+    {
+        GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
+        coin.GetComponent<Coin>().SetCoin(GameManager.Instance.Wave * 10f);
+    }
+
     protected override IEnumerator alphaBlink()
     {
         yield return new WaitForSeconds(0.05f);

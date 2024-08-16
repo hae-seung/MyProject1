@@ -8,16 +8,22 @@ public class GameManager : Singleton<GameManager>
    public PoolManager pool;
    public LivingEntity player;
    public Transform spawnPoint;
+   public MonsterSpawner monsterSpawner;
+   
    public float money;
    
    private int score = 0;
    public bool isGameover { get; private set; }
+   
+   public int Wave { get; set; }
+   
    public event Action OnResume;
    
    private void Start()
    {
       FindObjectOfType<PlayerHealth>().onDeath += EndGame;
       player.transform.position = spawnPoint.transform.position;
+      monsterSpawner.StartWave();
    }
 
    public void EndGame()
@@ -44,6 +50,14 @@ public class GameManager : Singleton<GameManager>
    {
       OnResume?.Invoke();
       Time.timeScale = 1;
+      
+      Coin[] coins = FindObjectsOfType<Coin>();
+
+      // 각각의 객체를 파괴합니다.
+      foreach (Coin coin in coins)
+      {
+         Destroy(coin.gameObject);
+      }
    }
 
    public bool Spend(float price)
@@ -59,4 +73,11 @@ public class GameManager : Singleton<GameManager>
          return true;
       }
    }
+
+   public void AddMoney(float coin)
+   {
+      money += coin;
+      UIManager.Instance.UpdateMoneyText(money);
+   }
+   
 }
