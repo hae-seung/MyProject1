@@ -11,6 +11,9 @@ public class GunUpgrade : MonoBehaviour
    public Image icon;
    public Gun[] guns;
    public Text AmmoText;
+
+   private float price = 50f;
+   
    private void Awake()
    {
       
@@ -18,21 +21,25 @@ public class GunUpgrade : MonoBehaviour
    
    public void RnageUpgrade(int index)
    {
-      level++;
-      switch (index)
+      if(GameManager.Instance.Spend(price))
       {
-         case 0 :
-            guns[index].BulletMaxDistance += 5f;
-            break;
-         case 1:
-            guns[index].BulletMaxDistance += 5f;
-            break;
-         case 2:
-            guns[index].BulletMaxDistance += 10f;
-            break;
+         level++;
+         switch (index)
+         {
+            case 0:
+               guns[index].BulletMaxDistance += 5f;
+               break;
+            case 1:
+               guns[index].BulletMaxDistance += 5f;
+               break;
+            case 2:
+               guns[index].BulletMaxDistance += 10f;
+               break;
+         }
+
+         levelText.text = "Lv." + level;
+         price *= 1.5f;
       }
-      
-      levelText.text = "Lv." + level;
       
       if (level == 5)
       {
@@ -42,21 +49,24 @@ public class GunUpgrade : MonoBehaviour
 
    public void DamageUpgrade(int index)
    {
-      level++;
-      switch (index)
+      if(GameManager.Instance.Spend(price))
       {
-         case 0:
-            guns[index].BulletDamage += 20;
-            break;
-         case 1:
-            guns[index].BulletDamage += 10;
-            break;
-         case 2:
-            guns[index].BulletDamage += 50;
-            break;
+         level++;
+         switch (index)
+         {
+            case 0:
+               guns[index].BulletDamage += 20;
+               break;
+            case 1:
+               guns[index].BulletDamage += 10;
+               break;
+            case 2:
+               guns[index].BulletDamage += 50;
+               break;
+         }
+
+         levelText.text = "Lv." + level;
       }
-      
-      levelText.text = "Lv." + level;
       
       if (level == 5)
       {
@@ -66,22 +76,25 @@ public class GunUpgrade : MonoBehaviour
 
    public void AddAmmoCapacity(int index)
    {
-      switch (index)
+      if(GameManager.Instance.Spend(price))
       {
-         case 0:
-            guns[index].AmmoCapacity += 30;
-            break;
-         case 1:
-            guns[index].AmmoCapacity += 15;
-            break;
-         case 2:
-            guns[index].AmmoCapacity += 5;
-            break;
+         switch (index)
+         {
+            case 0:
+               guns[index].AmmoCapacity += 30;
+               UIManager.Instance.UpdateGunModeText("Rifle");
+               break;
+            case 1:
+               guns[index].AmmoCapacity += 15;
+               UIManager.Instance.UpdateGunModeText("Shotgun");
+               break;
+            case 2:
+               guns[index].AmmoCapacity += 5;
+               UIManager.Instance.UpdateGunModeText("Snifer");
+               break;
+         }
+
+         UIManager.Instance.UpdateAmmoText(guns[index].MagAmmo, guns[index].AmmoCapacity);
       }
-      
-      AmmoText.text = guns[index].AmmoCapacity.ToString();
-      
-      UIManager.Instance.UpdateGunModeText(guns[index].ToString());
-      UIManager.Instance.UpdateAmmoText(guns[index].MagAmmo, guns[index].AmmoCapacity);
    }
 }

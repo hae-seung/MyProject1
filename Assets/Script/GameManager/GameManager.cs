@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
    public PoolManager pool;
    public LivingEntity player;
    public Transform spawnPoint;
+   public float money;
    
    private int score = 0;
    public bool isGameover { get; private set; }
@@ -43,5 +44,19 @@ public class GameManager : Singleton<GameManager>
    {
       OnResume?.Invoke();
       Time.timeScale = 1;
+   }
+
+   public bool Spend(float price)
+   {
+      if (money < price)
+      {
+         return false;
+      }
+      else
+      {
+         money -= price;
+         UIManager.Instance.UpdateMoneyText(money);
+         return true;
+      }
    }
 }

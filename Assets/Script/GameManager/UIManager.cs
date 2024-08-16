@@ -29,7 +29,7 @@ public class UIManager : Singleton<UIManager>
         waveText.text = "Wave : " + waves + "\nEnemy Left : " + count;
     }
 
-    public void UpdateMoneyText(int money)
+    public void UpdateMoneyText(float money)
     {
         moneyText.text = "Money : " + money + "원";
     }

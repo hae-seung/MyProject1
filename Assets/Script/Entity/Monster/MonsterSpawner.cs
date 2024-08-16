@@ -19,7 +19,8 @@ public class MonsterSpawner : MonoBehaviour
     private int currentMonsterCount = 0;
 
     private bool isBossAlive = false;
-
+    private bool isWaveInProgress = false;
+    
     [SerializeField] private List<MonsterDataArray> data;
     [SerializeField] private MonsterData[] bossData;
     [SerializeField] private GameObject[] bossPrefab;
@@ -35,12 +36,6 @@ public class MonsterSpawner : MonoBehaviour
     {
         if (GameManager.Instance != null && GameManager.Instance.isGameover)
             return;
-
-        // 보스가 없고 필드에 몬스터가 없을 때 보스를 소환
-        if (currentMonsterCount <= 0 && !isBossAlive && monsters.Count == 0)
-        {
-            StartCoroutine(SpawnBossWithDelay()); // 1초 지연 후 보스 소환
-        }
 
         UpdateUI();
     }

@@ -13,7 +13,13 @@ public class PlayerMovement : MonoBehaviour
     private PlayererInput playerInput;
     private Animator animator;
     private Rigidbody2D playerRb;
-
+    
+    public float MoveSpeed
+    {
+        get { return moveSpeed; }
+        set { moveSpeed = value; }
+    }
+    
     private void Start()
     {
         playerInput = GetComponent<PlayererInput>();

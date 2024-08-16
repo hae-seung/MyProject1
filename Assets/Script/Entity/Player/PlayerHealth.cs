@@ -19,6 +19,16 @@ public class PlayerHealth : LivingEntity
     [SerializeField] private PlayererInput playerInput;
     [SerializeField] private PlayerShooter playerShooter;
 
+
+    public float MaxHealth {
+        get {return maxHealth;}
+        set
+        {
+            maxHealth = value;
+            healthSlider.maxValue = value;
+        }
+    }
+    
     protected override void Awake()
     {
         base.Awake();
