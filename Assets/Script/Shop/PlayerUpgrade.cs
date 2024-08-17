@@ -5,13 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerUpgrade : MonoBehaviour
 {
-    //heal
-    //speed
-    //maxhealth
-    //gold?
-
     private int heal = 50;
     public Text playerText;
+    public Text priceText;
     public int level;
     private float price = 50f;
     
@@ -34,7 +30,7 @@ public class PlayerUpgrade : MonoBehaviour
         if (level == 0)
             price = 50f;
         else
-            price *= 1.25f;
+            price = Mathf.RoundToInt(price * 1.25f);
         
         if (level == 5)
         {
@@ -46,6 +42,7 @@ public class PlayerUpgrade : MonoBehaviour
             level++;
             player.MaxHealth += 50;
             playerText.text = "+" + player.MaxHealth;
+            priceText.text = price + "$";
         }
     }
 
@@ -54,7 +51,7 @@ public class PlayerUpgrade : MonoBehaviour
         if (level == 0)
             price = 30f;
         else
-            price *=1.25f;
+            price = Mathf.RoundToInt(price * 1.25f);
         
         if (level == 5)
         {
@@ -66,6 +63,7 @@ public class PlayerUpgrade : MonoBehaviour
             level++;
             playerMovement.MoveSpeed += 10f;
             playerText.text = "Lv." + level;
+            priceText.text = price + "$";
         }
     }
 }

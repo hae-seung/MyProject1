@@ -8,7 +8,7 @@ public class GunUpgrade : MonoBehaviour
 {
    private int level = 0;
    public Text levelText;
-   public Image icon;
+   public Text goldText;
    public Gun[] guns;
    public Text AmmoText;
 
@@ -38,6 +38,7 @@ public class GunUpgrade : MonoBehaviour
          }
 
          levelText.text = "Lv." + level;
+         goldText.text = guns[index].ToString() + ":" + price;
          price *= 1.5f;
       }
       
@@ -66,6 +67,8 @@ public class GunUpgrade : MonoBehaviour
          }
 
          levelText.text = "Lv." + level;
+         goldText.text = guns[index].ToString() + ":" + price;
+         price *= 1.5f;
       }
       
       if (level == 5)
@@ -95,6 +98,7 @@ public class GunUpgrade : MonoBehaviour
          }
 
          UIManager.Instance.UpdateAmmoText(guns[index].MagAmmo, guns[index].AmmoCapacity);
+         
       }
    }
 }
