@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : Singleton<AudioManager>
 {
@@ -11,7 +12,8 @@ public class AudioManager : Singleton<AudioManager>
     public AudioClip healClip;
 
     public AudioSource audioSource;
-
+    
+    
     public void playShot()
     {
         audioSource.PlayOneShot(shotClip);

@@ -7,6 +7,7 @@ public class Rifle : Gun
     protected override void Awake()
     {
         base.Awake();
+        GunName = "Rifle";
         MagCapacity = 30;
         AmmoCapacity = 90;
         MagAmmo = MagCapacity;

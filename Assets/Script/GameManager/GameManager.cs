@@ -23,6 +23,8 @@ public class GameManager : Singleton<GameManager>
    {
       FindObjectOfType<PlayerHealth>().onDeath += EndGame;
       player.transform.position = spawnPoint.transform.position;
+      money = 10000;//test
+      UIManager.Instance.UpdateMoneyText(money);//test
       monsterSpawner.StartWave();
    }
 

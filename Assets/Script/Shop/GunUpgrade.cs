@@ -38,8 +38,8 @@ public class GunUpgrade : MonoBehaviour
          }
 
          levelText.text = "Lv." + level;
-         goldText.text = guns[index].ToString() + ":" + price;
-         price *= 1.5f;
+         price = Mathf.RoundToInt(price * 1.5f);
+         goldText.text = guns[index].GunName + ":" + price + "$";
       }
       
       if (level == 5)
@@ -67,8 +67,8 @@ public class GunUpgrade : MonoBehaviour
          }
 
          levelText.text = "Lv." + level;
-         goldText.text = guns[index].ToString() + ":" + price;
-         price *= 1.5f;
+         price = Mathf.RoundToInt(price * 1.5f);
+         goldText.text = guns[index].GunName + ":" + price + "$";
       }
       
       if (level == 5)

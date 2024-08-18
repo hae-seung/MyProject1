@@ -9,6 +9,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform fireTransform;
     
     protected float lastFireTime;
+    public string GunName { get; protected set; }
+    
     protected int MagCapacity { get; set; }
     public int AmmoCapacity { get; set; }
     public int MagAmmo { get;  set; }

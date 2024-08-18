@@ -46,8 +46,8 @@ public class UIManager : Singleton<UIManager>
 
     public void GameRestart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameoverUI.SetActive(false);
+        SceneManager.LoadScene("Lobby");
     }
 
     public void AnnounceBoss()

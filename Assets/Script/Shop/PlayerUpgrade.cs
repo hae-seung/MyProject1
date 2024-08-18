@@ -18,6 +18,13 @@ public class PlayerUpgrade : MonoBehaviour
     public void HealPlayer()
     {
         float fixedPrice = 50f;
+        
+        if (player.Health >= player.MaxHealth)
+        {
+            Debug.Log("강화불가");  
+            return;
+        }
+        
         if(GameManager.Instance.Spend(fixedPrice))
         {
             player.RestoreHealth(heal);
@@ -32,17 +39,17 @@ public class PlayerUpgrade : MonoBehaviour
         else
             price = Mathf.RoundToInt(price * 1.25f);
         
-        if (level == 5)
-        {
-            GetComponent<Button>().interactable = false;
-        }
-        
         if (GameManager.Instance.Spend(price))
         {
             level++;
             player.MaxHealth += 50;
             playerText.text = "+" + player.MaxHealth;
             priceText.text = price + "$";
+        }
+        
+        if (level == 5)
+        {
+            GetComponent<Button>().interactable = false;
         }
     }
 
@@ -53,17 +60,17 @@ public class PlayerUpgrade : MonoBehaviour
         else
             price = Mathf.RoundToInt(price * 1.25f);
         
-        if (level == 5)
-        {
-            GetComponent<Button>().interactable = false;
-        }
-        
         if (GameManager.Instance.Spend(price))
         {
             level++;
             playerMovement.MoveSpeed += 10f;
             playerText.text = "Lv." + level;
             priceText.text = price + "$";
+        }
+        
+        if (level == 5)
+        {
+            GetComponent<Button>().interactable = false;
         }
     }
 }
