@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &224619758162926760
 RectTransform:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 114559903995998298}
   - component: {fileID: 114186528587364174}
   m_Layer: 5
-  m_Name: Restart Button
+  m_Name: Home Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -425,7 +425,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6162611143403304107}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: GameRestart
+        m_MethodName: GoMain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -936,6 +936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad97e71c211a1f418ad3a935eff364d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tabPanelSet: []
 --- !u!1 &403179583976465958
 GameObject:
   m_ObjectHideFlags: 0

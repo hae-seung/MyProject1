@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : MySingleton<UIManager>
 {
     public Text ammoText;
     public Text scoreText;
@@ -44,9 +44,10 @@ public class UIManager : Singleton<UIManager>
         gameoverUI.SetActive(active);
     }
 
-    public void GameRestart()
+    public void GoMain()
     {
         gameoverUI.SetActive(false);
+        GameManager.Instance.SaveDiamond();
         SceneManager.LoadScene("Lobby");
     }
 

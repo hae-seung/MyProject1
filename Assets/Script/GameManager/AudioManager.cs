@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : Singleton<AudioManager>
+public class AudioManager : MySingleton<AudioManager>
 {
     public AudioClip shotClip;
     public AudioClip jumpClip;

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MySingleton<GameManager>
 {
    public PoolManager pool;
    public LivingEntity player;
@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
    
    public float money;
    
-   private int score = 0;
+   public int score = 0;
    public bool isGameover { get; private set; }
    
    public int Wave { get; set; }
@@ -81,5 +81,10 @@ public class GameManager : Singleton<GameManager>
       money += coin;
       UIManager.Instance.UpdateMoneyText(money);
    }
-   
+
+   public void SaveDiamond()
+   {
+      int diamondValue = Mathf.RoundToInt(score / 10);
+      PlayerInfo.Instance.Diamond += diamondValue;
+   }
 }

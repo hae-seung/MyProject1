@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mushroom Boss
   m_EditorClassIdentifier: 
   health: 250
-  damage: 20
+  damage: 100
   speed: 5
   attackDelay: 2
   targetLockOnDistance: 50
