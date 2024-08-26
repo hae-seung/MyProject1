@@ -16,7 +16,6 @@ public class LobbyPanel : MonoBehaviour
 
    public void ButtonClicked(int index)
    {
-      
       for (int i = 0; i < panelSet.Length; i++)
       {
          if (panelSet[i].activeSelf && i != index)
@@ -25,11 +24,6 @@ public class LobbyPanel : MonoBehaviour
          }
       }
       panelSet[index].SetActive(true);
-   }
-
-   public void CloseButtonClicked(GameObject closeButton)
-   {
-      closeButton.transform.parent.gameObject.SetActive(false);
    }
 
 }
