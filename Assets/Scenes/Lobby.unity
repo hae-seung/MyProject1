@@ -304,6 +304,7 @@ GameObject:
   - component: {fileID: 30958858}
   - component: {fileID: 30958857}
   - component: {fileID: 30958856}
+  - component: {fileID: 30958859}
   m_Layer: 5
   m_Name: Rifle
   m_TagString: Untagged
@@ -377,7 +378,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 30958857}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 616824264}
+        m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
+        m_MethodName: OnUpgradeAmmoButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 30958856}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &30958857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,6 +429,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30958854}
   m_CullTransparentMesh: 1
+--- !u!114 &30958859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30958854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b466b3933244a45bf34de6c38bae03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Rifle
 --- !u!1 &101957457
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +795,7 @@ GameObject:
   - component: {fileID: 234206005}
   - component: {fileID: 234206004}
   - component: {fileID: 234206003}
+  - component: {fileID: 234206006}
   m_Layer: 5
   m_Name: Snifer(UnLock)
   m_TagString: Untagged
@@ -842,7 +869,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 234206004}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 616824264}
+        m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
+        m_MethodName: OnUpgradeAmmoButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 234206003}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &234206004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,6 +920,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234206001}
   m_CullTransparentMesh: 1
+--- !u!114 &234206006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234206001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b466b3933244a45bf34de6c38bae03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Snifer
 --- !u!1 &246441965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,6 +1560,7 @@ GameObject:
   - component: {fileID: 468657885}
   - component: {fileID: 468657884}
   - component: {fileID: 468657883}
+  - component: {fileID: 468657886}
   m_Layer: 5
   m_Name: ShotGun
   m_TagString: Untagged
@@ -1581,7 +1634,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 468657884}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 616824264}
+        m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
+        m_MethodName: OnUpgradeAmmoButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 468657883}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &468657884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1620,6 +1685,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468657881}
   m_CullTransparentMesh: 1
+--- !u!114 &468657886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468657881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b466b3933244a45bf34de6c38bae03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: ShotGun
 --- !u!1 &488384694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2108,6 +2186,7 @@ GameObject:
   - component: {fileID: 616824261}
   - component: {fileID: 616824262}
   - component: {fileID: 616824263}
+  - component: {fileID: 616824264}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -2180,6 +2259,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &616824264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616824260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f83eef9145ab24f8c7169746120df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &631838917
 GameObject:
   m_ObjectHideFlags: 0
@@ -4081,6 +4172,7 @@ GameObject:
   - component: {fileID: 1119974033}
   - component: {fileID: 1119974032}
   - component: {fileID: 1119974031}
+  - component: {fileID: 1119974034}
   m_Layer: 5
   m_Name: ShotGun
   m_TagString: Untagged
@@ -4154,7 +4246,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1119974032}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 616824264}
+        m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
+        m_MethodName: OnUpgradeDamageButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1119974031}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1119974032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4193,6 +4297,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119974029}
   m_CullTransparentMesh: 1
+--- !u!114 &1119974034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119974029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b466b3933244a45bf34de6c38bae03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: ShotGun
 --- !u!1 &1164528166
 GameObject:
   m_ObjectHideFlags: 0
@@ -4205,6 +4322,7 @@ GameObject:
   - component: {fileID: 1164528170}
   - component: {fileID: 1164528169}
   - component: {fileID: 1164528168}
+  - component: {fileID: 1164528171}
   m_Layer: 5
   m_Name: Rifle
   m_TagString: Untagged
@@ -4278,7 +4396,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1164528169}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 616824264}
+        m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
+        m_MethodName: OnUpgradeDamageButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1164528168}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1164528169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4317,6 +4447,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164528166}
   m_CullTransparentMesh: 1
+--- !u!114 &1164528171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164528166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b466b3933244a45bf34de6c38bae03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Rifle
 --- !u!1 &1171152966
 GameObject:
   m_ObjectHideFlags: 0
@@ -5029,6 +5172,7 @@ GameObject:
   - component: {fileID: 1331274865}
   - component: {fileID: 1331274864}
   - component: {fileID: 1331274863}
+  - component: {fileID: 1331274866}
   m_Layer: 5
   m_Name: Rifle
   m_TagString: Untagged
@@ -5102,7 +5246,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1331274864}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 616824264}
+        m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
+        m_MethodName: OnUpgradeRangeButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1331274863}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Rifle
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1331274864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5141,6 +5297,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331274861}
   m_CullTransparentMesh: 1
+--- !u!114 &1331274866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331274861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b466b3933244a45bf34de6c38bae03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Rifle
 --- !u!1 &1335100231
 GameObject:
   m_ObjectHideFlags: 0
@@ -5771,7 +5940,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1463693027}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 616824264}
+        m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
+        m_MethodName: OnUpgradeSpeedButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1463693026}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1463693027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6296,6 +6477,7 @@ GameObject:
   - component: {fileID: 1553588874}
   - component: {fileID: 1553588873}
   - component: {fileID: 1553588872}
+  - component: {fileID: 1553588875}
   m_Layer: 5
   m_Name: Snifer(UnLock)
   m_TagString: Untagged
@@ -6369,7 +6551,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1553588873}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 616824264}
+        m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
+        m_MethodName: OnUpgradeDamageButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1553588872}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1553588873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6408,6 +6602,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553588870}
   m_CullTransparentMesh: 1
+--- !u!114 &1553588875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553588870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b466b3933244a45bf34de6c38bae03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Snifer
 --- !u!1 &1555118229
 GameObject:
   m_ObjectHideFlags: 0
@@ -7684,6 +7891,7 @@ GameObject:
   - component: {fileID: 2081188802}
   - component: {fileID: 2081188801}
   - component: {fileID: 2081188800}
+  - component: {fileID: 2081188803}
   m_Layer: 5
   m_Name: ShotGun
   m_TagString: Untagged
@@ -7757,7 +7965,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2081188801}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 616824264}
+        m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
+        m_MethodName: OnUpgradeRangeButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2081188800}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2081188801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7796,6 +8016,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081188798}
   m_CullTransparentMesh: 1
+--- !u!114 &2081188803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081188798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b466b3933244a45bf34de6c38bae03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: ShotGun
 --- !u!1 &2103230434
 GameObject:
   m_ObjectHideFlags: 0
@@ -7956,7 +8189,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2111742028}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 616824264}
+        m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
+        m_MethodName: OnUpgradeHealthButtonClicked
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2111742027}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2111742028
 MonoBehaviour:
   m_ObjectHideFlags: 0

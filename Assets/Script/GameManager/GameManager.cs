@@ -85,7 +85,6 @@ public class GameManager : MySingleton<GameManager>
    public void SaveDiamond()
    {
       int diamondValue = Mathf.RoundToInt(score / 10);
-      int dia = PlayerPrefs.HasKey("Diamond") ? PlayerPrefs.GetInt("Diamond")+diamondValue : diamondValue;
-      PlayerPrefs.SetInt("Diamond", dia);
+      PlayerInfo.Instance.Diamond += diamondValue;
    }
 }
