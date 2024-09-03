@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed = 10f;
     private bool isGround = true;
 
-    private PlayererInput playerInput;
+    private PlayerInput playerInput;
     private Animator animator;
     private Rigidbody2D playerRb;
     
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void Start()
     {
-        playerInput = GetComponent<PlayererInput>();
+        playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody2D>();
     }

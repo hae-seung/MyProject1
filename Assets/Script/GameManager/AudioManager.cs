@@ -11,8 +11,12 @@ public class AudioManager : MySingleton<AudioManager>
     public AudioClip changeClip;
     public AudioClip healClip;
 
-    public AudioSource audioSource;
-    
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     
     public void playShot()
     {

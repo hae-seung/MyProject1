@@ -38,6 +38,7 @@ public class PlayerInfo : Singleton<PlayerInfo>
         if (!PlayerPrefs.HasKey("Diamond"))
         {
             PlayerPrefs.SetInt("Diamond", 10000);
+            PlayerPrefs.Save();
         }
     }
     
@@ -72,7 +73,6 @@ public class PlayerInfo : Singleton<PlayerInfo>
                 return weapon.Value;
             }
         }
-
         return null;
     }
     

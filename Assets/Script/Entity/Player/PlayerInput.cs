@@ -4,7 +4,7 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayererInput : MonoBehaviour
+public class PlayerInput : MonoBehaviour
 {
     public Transform firepos;
     public Slider healthSlider;  // 체력 슬라이더
@@ -14,13 +14,26 @@ public class PlayererInput : MonoBehaviour
     public bool Jump { get; private set; }
     public bool Shot { get; private set; }
     public bool Reload { get; private set; }
-    public bool RifleGun { get; private set; }
-    public bool ShotGun { get; private set; }
+    public GunType selectedGun { get; private set; }
+    public bool SniferZoom { get; private set; }
+
+    public enum GunType
+    {
+        Rifle,
+        ShotGun,
+        Snifer
+    };
 
     private void Update()
     {
-        RifleGun = Input.GetKeyDown(KeyCode.Alpha1);
-        ShotGun = Input.GetKeyDown(KeyCode.Alpha2);
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            selectedGun = GunType.Rifle;
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            selectedGun = GunType.ShotGun;
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+            selectedGun = GunType.Snifer;
+                
+        SniferZoom = Input.GetMouseButtonDown(1);
     }
 
     private void FixedUpdate()
@@ -30,7 +43,7 @@ public class PlayererInput : MonoBehaviour
         Shot = Input.GetMouseButton(0);
         Reload = Input.GetKey(KeyCode.R);
 
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition = CameraController.Instance.GetMouseWorldPosition();
         if (mousePosition.x < firepos.position.x - 1.75f / 2 && facingRight)
         {
             FlipCharacter();

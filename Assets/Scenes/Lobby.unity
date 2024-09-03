@@ -169,12 +169,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029285}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 0
+  m_ShowMaskGraphic: 1
 --- !u!114 &1029288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 616824264}
+      - m_Target: {fileID: 246441969}
         m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
         m_MethodName: OnUpgradeAmmoButtonClicked
         m_Mode: 2
@@ -870,7 +870,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 616824264}
+      - m_Target: {fileID: 246441969}
         m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
         m_MethodName: OnUpgradeAmmoButtonClicked
         m_Mode: 2
@@ -944,6 +944,8 @@ GameObject:
   - component: {fileID: 246441966}
   - component: {fileID: 246441968}
   - component: {fileID: 246441967}
+  - component: {fileID: 246441969}
+  - component: {fileID: 246441970}
   m_Layer: 5
   m_Name: ShopSet
   m_TagString: Untagged
@@ -969,7 +971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1, y: -14}
+  m_AnchoredPosition: {x: -1, y: -13.999924}
   m_SizeDelta: {x: -623.7325, y: -179.3663}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &246441967
@@ -1010,6 +1012,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246441965}
   m_CullTransparentMesh: 1
+--- !u!114 &246441969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246441965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f83eef9145ab24f8c7169746120df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &246441970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246441965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da8d02afdbb0ad4185170d1e39a8cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reinforceGroups:
+  - {fileID: 2145054226}
+  - {fileID: 2112874197}
+  - {fileID: 665210055}
+  - {fileID: 993176372}
+  - {fileID: 691363914}
 --- !u!1 &281656634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,7 +1462,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 843240781}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.32227734
+  m_Size: 0.27764958
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1635,7 +1667,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 616824264}
+      - m_Target: {fileID: 246441969}
         m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
         m_MethodName: OnUpgradeAmmoButtonClicked
         m_Mode: 2
@@ -1999,7 +2031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 377, y: 110.19}
+  m_AnchoredPosition: {x: -378.13, y: 130.88}
   m_SizeDelta: {x: 100, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &568160472
@@ -2186,7 +2218,6 @@ GameObject:
   - component: {fileID: 616824261}
   - component: {fileID: 616824262}
   - component: {fileID: 616824263}
-  - component: {fileID: 616824264}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -2208,8 +2239,8 @@ RectTransform:
   m_Children:
   - {fileID: 2145054227}
   - {fileID: 2112874198}
-  - {fileID: 993176373}
   - {fileID: 665210056}
+  - {fileID: 993176373}
   - {fileID: 691363915}
   - {fileID: 1301373271}
   m_Father: {fileID: 1029286}
@@ -2217,7 +2248,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -0.00012207, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &616824262
 MonoBehaviour:
@@ -2235,7 +2266,7 @@ MonoBehaviour:
     m_Left: 20
     m_Right: 0
     m_Top: 20
-    m_Bottom: 0
+    m_Bottom: 50
   m_ChildAlignment: 0
   m_Spacing: 50
   m_ChildForceExpandWidth: 1
@@ -2259,18 +2290,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &616824264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616824260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1f83eef9145ab24f8c7169746120df9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &631838917
 GameObject:
   m_ObjectHideFlags: 0
@@ -2437,6 +2456,7 @@ GameObject:
   - component: {fileID: 651178808}
   - component: {fileID: 651178810}
   - component: {fileID: 651178809}
+  - component: {fileID: 651178811}
   m_Layer: 5
   m_Name: DiamondText
   m_TagString: Untagged
@@ -2460,8 +2480,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -536.14, y: 31}
-  m_SizeDelta: {x: 207.7252, y: 62}
+  m_AnchoredPosition: {x: -498.71, y: 31}
+  m_SizeDelta: {x: 282.585, y: 62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &651178809
 MonoBehaviour:
@@ -2490,7 +2510,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2505,6 +2525,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651178807}
   m_CullTransparentMesh: 1
+--- !u!114 &651178811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651178807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e5bbc77ae116a4596dbcd92e5cbc09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diaText: {fileID: 651178809}
 --- !u!1 &665210055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2516,7 +2549,7 @@ GameObject:
   - component: {fileID: 665210056}
   - component: {fileID: 665210057}
   m_Layer: 5
-  m_Name: MaxAmmoGroup
+  m_Name: AmmoGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2582,7 +2615,7 @@ GameObject:
   - component: {fileID: 691363915}
   - component: {fileID: 691363916}
   m_Layer: 5
-  m_Name: MaxHealthGroup
+  m_Name: HealthGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3670,7 +3703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1, y: -14}
+  m_AnchoredPosition: {x: -1, y: -13.999924}
   m_SizeDelta: {x: -623.7325, y: -179.3663}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1042827138
@@ -4247,7 +4280,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 616824264}
+      - m_Target: {fileID: 246441969}
         m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
         m_MethodName: OnUpgradeDamageButtonClicked
         m_Mode: 2
@@ -4397,7 +4430,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 616824264}
+      - m_Target: {fileID: 246441969}
         m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
         m_MethodName: OnUpgradeDamageButtonClicked
         m_Mode: 2
@@ -5247,7 +5280,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 616824264}
+      - m_Target: {fileID: 246441969}
         m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
         m_MethodName: OnUpgradeRangeButtonClicked
         m_Mode: 2
@@ -5941,7 +5974,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 616824264}
+      - m_Target: {fileID: 246441969}
         m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
         m_MethodName: OnUpgradeSpeedButtonClicked
         m_Mode: 2
@@ -6552,7 +6585,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 616824264}
+      - m_Target: {fileID: 246441969}
         m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
         m_MethodName: OnUpgradeDamageButtonClicked
         m_Mode: 2
@@ -6773,6 +6806,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587342963}
   m_CullTransparentMesh: 1
+--- !u!1 &1676812104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1676812105}
+  - component: {fileID: 1676812106}
+  m_Layer: 0
+  m_Name: PlayerInfo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1676812105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676812104}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 374.67807, y: 122.02649, z: -12.791399}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1676812106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676812104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b8581779c0f1449994e478184b557b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1678971406
 GameObject:
   m_ObjectHideFlags: 0
@@ -7704,7 +7781,6 @@ GameObject:
   - component: {fileID: 2078875426}
   - component: {fileID: 2078875425}
   - component: {fileID: 2078875427}
-  - component: {fileID: 2078875428}
   m_Layer: 5
   m_Name: LobbyPanel
   m_TagString: Untagged
@@ -7730,7 +7806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.0999756, y: 0}
+  m_AnchoredPosition: {x: -1, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2078875425
@@ -7786,20 +7862,6 @@ MonoBehaviour:
   panelSet:
   - {fileID: 246441965}
   - {fileID: 1042827136}
---- !u!114 &2078875428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078875423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6e5bbc77ae116a4596dbcd92e5cbc09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diamondText: {fileID: 651178809}
-  dia: 0
 --- !u!1 &2078880318
 GameObject:
   m_ObjectHideFlags: 0
@@ -7966,7 +8028,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 616824264}
+      - m_Target: {fileID: 246441969}
         m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
         m_MethodName: OnUpgradeRangeButtonClicked
         m_Mode: 2
@@ -8117,7 +8179,7 @@ GameObject:
   - component: {fileID: 2111742028}
   - component: {fileID: 2111742027}
   m_Layer: 5
-  m_Name: MaxHealth
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8190,7 +8252,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 616824264}
+      - m_Target: {fileID: 246441969}
         m_TargetAssemblyTypeName: ReinforceManager, Assembly-CSharp
         m_MethodName: OnUpgradeHealthButtonClicked
         m_Mode: 2
@@ -8342,7 +8404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -589.99994, y: -179.87378}
+  m_AnchoredPosition: {x: -589.99994, y: -163}
   m_SizeDelta: {x: 200, y: 70}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2133514213
@@ -8510,3 +8572,4 @@ SceneRoots:
   - {fileID: 1258543075}
   - {fileID: 302956873}
   - {fileID: 959495841}
+  - {fileID: 1676812105}

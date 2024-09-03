@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
 {
-    private PlayererInput playerInput;
+    private PlayerInput playerInput;
     private Animator animator;
     private int rifle = 0;
     private int shotgun = 1;
-    //private int snifer = 2;
+    private int snifer = 2;
     
     [SerializeField]
     private Gun[] guns;
 
-    private Gun gun;
-
+    private Gun currentGun;
+    
     private void Start()
     {
-        playerInput = GetComponent<PlayererInput>();
+        playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
-        gun = guns[rifle];
+        currentGun = guns[rifle];
     }
     private void Update()
     {
         if(playerInput.Shot)
         {
-           if(gun.Fire())
+           if(currentGun.Fire())
            {
                 animator.SetTrigger("shot");
                 AudioManager.Instance.playShot();
@@ -34,44 +34,49 @@ public class PlayerShooter : MonoBehaviour
 
         if(playerInput.Reload)
         {
-            if(gun.reload())
+            if(currentGun.reload())
             {
                 animator.SetTrigger("reload");
             }
         }
 
-        if(playerInput.RifleGun)
+        if (playerInput.SniferZoom)
         {
-            SwitchGun(rifle);
-            AudioManager.Instance.playChangeGun();
+            if (currentGun == guns[snifer])
+                currentGun.Zoom();
         }
 
-        if(playerInput.ShotGun)
+        if (playerInput.selectedGun != null)
         {
-            SwitchGun(shotgun);
-            AudioManager.Instance.playChangeGun();
+            SwitchGun(playerInput.selectedGun);
         }
+        
     }
 
-    private void SwitchGun(int gunmode)
+    private void SwitchGun(PlayerInput.GunType gunType)
     {
-        if(gunmode>=0 && gunmode<guns.Length)
+        if(CameraController.Instance.GetZoomStatus() && gunType != PlayerInput.GunType.Snifer)
+            CameraController.Instance.SwitchCamera(false);
+        
+        switch (gunType)
         {
-            gun = guns[gunmode];
-        }
-        switch(gunmode)
-        {
-            case 0://rifle
+            case PlayerInput.GunType.Rifle:
+                currentGun = guns[rifle];
                 UIManager.Instance.UpdateGunModeText("Rifle");
                 break;
-            case 1://shotgun
+            case PlayerInput.GunType.ShotGun:
+                currentGun = guns[shotgun];
                 UIManager.Instance.UpdateGunModeText("Shotgun");
                 break;
-            case 2://snifer
-                UIManager.Instance.UpdateGunModeText("Snifer");
+            case PlayerInput.GunType.Snifer:
+                if(PlayerPrefs.HasKey("UnlockQuest"))
+                {
+                    currentGun = guns[snifer];
+                    UIManager.Instance.UpdateGunModeText("Sniper");
+                }
                 break;
         }
-        UIManager.Instance.UpdateAmmoText(gun.MagAmmo, gun.AmmoCapacity);
+        UIManager.Instance.UpdateAmmoText(currentGun.MagAmmo, currentGun.AmmoCapacity);
     }
     
 }

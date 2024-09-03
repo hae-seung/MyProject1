@@ -10,7 +10,6 @@ public class Gun : MonoBehaviour
     
     protected float lastFireTime;
     public string GunName { get; protected set; }
-    
     protected int MagCapacity { get; set; }
     public int AmmoCapacity { get; set; }
     public int MagAmmo { get;  set; }
@@ -25,7 +24,8 @@ public class Gun : MonoBehaviour
    {
         Ready,
         Empty,
-        Reloading
+        Reloading,
+        Zoom
    }
    
     public Transform FireTransform
@@ -43,10 +43,9 @@ public class Gun : MonoBehaviour
         lastFireTime = 0f;
         state = State.Ready;
     }
-    
     public bool Fire()
    {
-        if(state == State.Ready && Time.time >= lastFireTime + TimeBetFire)
+        if((state == State.Ready || state == State.Zoom) && Time.time >= lastFireTime + TimeBetFire)
         {
             lastFireTime = Time.time;
             Shot();
@@ -55,6 +54,20 @@ public class Gun : MonoBehaviour
         }
         return false;
    }
+
+    public void Zoom()
+    {
+        if (state == State.Zoom)//줌 해제
+        {
+            CameraController.Instance.SwitchCamera(false);
+            state = State.Ready;
+        }
+        else if (state == State.Ready)//줌인
+        {
+            CameraController.Instance.SwitchCamera(true);
+            state = State.Zoom;
+        }
+    }
    
    public bool reload()//public 고정
     {
@@ -89,6 +102,7 @@ public class Gun : MonoBehaviour
         state = State.Ready;
    }
    protected virtual void Shot() {}
+   
    
    protected void AddBulletSpeed(){}
    protected virtual void AddMagCapacity(){}

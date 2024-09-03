@@ -7,7 +7,6 @@ public class MySingleton<T>: MonoBehaviour where T : MonoBehaviour //Just In Sce
 {
     private static T instance;
     
-    
     public static T Instance
     {
         get

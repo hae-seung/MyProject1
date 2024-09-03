@@ -16,7 +16,7 @@ public class PlayerHealth : LivingEntity
     private Animator playerAnimator;
     private bool isHurt;
     
-    [SerializeField] private PlayererInput playerInput;
+    [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerShooter playerShooter;
 
 
