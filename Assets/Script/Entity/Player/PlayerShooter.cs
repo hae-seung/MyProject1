@@ -34,10 +34,7 @@ public class PlayerShooter : MonoBehaviour
 
         if(playerInput.Reload)
         {
-            if(currentGun.reload())
-            {
-                animator.SetTrigger("reload");
-            }
+            currentGun.Reload();
         }
 
         if (playerInput.SniferZoom)

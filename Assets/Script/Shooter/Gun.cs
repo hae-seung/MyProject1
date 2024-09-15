@@ -9,6 +9,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform fireTransform;
     
     protected float lastFireTime;
+    public Animator playerAnimator;
+    
     public string GunName { get; protected set; }
     protected int MagCapacity { get; set; }
     public int AmmoCapacity { get; set; }
@@ -42,6 +44,7 @@ public class Gun : MonoBehaviour
     {
         lastFireTime = 0f;
         state = State.Ready;
+        
     }
     public bool Fire()
    {
@@ -57,7 +60,7 @@ public class Gun : MonoBehaviour
 
     public void Zoom()
     {
-        if (state == State.Zoom)//줌 해제
+        if (state == State.Zoom || state == State.Empty)//줌 해제
         {
             CameraController.Instance.SwitchCamera(false);
             state = State.Ready;
@@ -69,7 +72,7 @@ public class Gun : MonoBehaviour
         }
     }
    
-   public bool reload()//public 고정
+   public bool Reload()//public 고정
     {
         if(state == State.Reloading || AmmoCapacity<=0 || MagAmmo >= MagCapacity)
             return false;
@@ -82,8 +85,10 @@ public class Gun : MonoBehaviour
         state = State.Reloading;
 
         AudioManager.Instance.playReload();
-
+        
+        playerAnimator.SetBool("reload", true);
         yield return new WaitForSeconds(ReloadTime);
+        playerAnimator.SetBool("reload", false);
         
         int ammoFill = MagCapacity - MagAmmo;
 
